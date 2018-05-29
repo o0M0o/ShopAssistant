@@ -2,14 +2,7 @@ package com.wxm.shopassistant.util
 
 import com.wxm.shopassistant.data.db.DBHelper
 import com.wxm.shopassistant.data.db.UsrDBUtil
-import wxm.KeepAccount.R
-import wxm.KeepAccount.db.*
-import wxm.KeepAccount.define.IncomeNoteItem
-import wxm.KeepAccount.item.BudgetItem
-import wxm.KeepAccount.item.PayNoteItem
-import wxm.KeepAccount.item.RemindItem
-import wxm.KeepAccount.item.UsrItem
-import wxm.KeepAccount.ui.utility.NoteDataHelper
+import com.wxm.shopassistant.data.item.UsrItem
 import wxm.androidutil.app.AppBase
 import wxm.androidutil.util.FileUtil
 import java.io.File
@@ -26,6 +19,9 @@ class AppUtil : AppBase() {
 
     // for dir
     private lateinit var mImageDirPath: String
+
+    // for usr
+    private var mUICurUsr: UsrItem? = null
 
     override fun onCreate() {
         // TODO Auto-generated method stub
@@ -83,12 +79,7 @@ class AppUtil : AppBase() {
             get() = self.mUsrDBUtil
 
         /**
-         * get current usr
-         * @return      current usr
-         */
-        /**
-         * set current usr
-         * @param cur_usr   current usr
+         * get or set current usr
          */
         var curUsr: UsrItem?
             get() = self.mUICurUsr
