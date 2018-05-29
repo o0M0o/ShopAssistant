@@ -1,10 +1,23 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        YYBKey {
+            keyAlias        project.YYB_KEY_ALIAS
+            keyPassword     project.YYB_KEY_PWD
+            storeFile       file(project.YYB_FILE_PATH)
+            storePassword   project.YYB_STORE_PWD
+        }
+        KuAnKey {
+            keyAlias        project.KUAN_KEY_ALIAS
+            keyPassword     project.KUAN_KEY_PWD
+            storeFile       file(project.KUAN_FILE_PATH)
+            storePassword   project.KUAN_STORE_PWD
+        }
+    }
+
     compileSdkVersion 27
     defaultConfig {
         applicationId "wxm.com.shopassistant"
@@ -14,17 +27,66 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res',
+                            'src/main/res/layouts/fragment',
+                            'src/main/res/layouts/page',
+                            'src/main/res/layouts/dialog',
+                            'src/main/res/layouts/viewItem',
+                            'src/main/res/layouts/base',
+                            'src/main/res/layouts'
+                    ]
         }
     }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+        }
+
+        debug {
+            debuggable true
+        }
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        alpha {}
+
+        YYB_keepaccount {
+            signingConfig signingConfigs.YYBKey
+        }
+
+        KuAn_keepaccount {
+            signingConfig signingConfigs.KuAnKey
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${variant.name}-${variant.versionName}-${releaseTime()}.apk"
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+static def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+8"))
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
