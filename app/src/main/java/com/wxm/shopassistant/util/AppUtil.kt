@@ -3,6 +3,7 @@ package com.wxm.shopassistant.util
 import com.wxm.shopassistant.data.db.DBHelper
 import com.wxm.shopassistant.data.db.UsrDBUtil
 import com.wxm.shopassistant.data.item.UsrItem
+import com.wxm.shopassistant.define.GlobalDef
 import wxm.androidutil.app.AppBase
 import wxm.androidutil.util.FileUtil
 import java.io.File
@@ -58,8 +59,6 @@ class AppUtil : AppBase() {
     }
 
     companion object {
-        private const val USR_DEFAULT_ICON_NAME = "usr_default_icon.png"
-
         val self: AppUtil
             get() = (appContext() as AppUtil)
 
@@ -67,7 +66,7 @@ class AppUtil : AppBase() {
             get() = self.mImageDirPath
 
         val usrDefaultIconPath: String
-            get() = createPath(self.mImageDirPath, USR_DEFAULT_ICON_NAME)
+            get() = createPath(self.mImageDirPath, GlobalDef.USR_DEFAULT_ICON_NAME)
 
         /**
          * DB helper
@@ -75,7 +74,10 @@ class AppUtil : AppBase() {
         val dbHelper: DBHelper
             get() = self.mDBHelper
 
-        val usrDBUtil :UsrDBUtil
+        /**
+         * for usr
+         */
+        val usrUtil :UsrDBUtil
             get() = self.mUsrDBUtil
 
         /**

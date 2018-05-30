@@ -17,4 +17,6 @@ object GlobalDef {
     const val DB_CREATE = "create"
     const val DB_DELETE = "delete"
     const val DB_MODIFY = "modify"
+
+    const val USR_DEFAULT_ICON_NAME = "usr_default_icon.png"
 }

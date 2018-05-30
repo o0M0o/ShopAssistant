@@ -44,7 +44,7 @@ fun createPath(dir:String, fn:String): String   {
  * example : "123/456/abc.jpg" -> ".jpg"
  */
 fun getFileSuffixes(fn:String): String  {
-    fn.lastIndexOf(".").let {
+    return fn.lastIndexOf(".").let {
         if(-1 != it)    fn.substring(it)
         else ""
     }
@@ -67,11 +67,13 @@ fun saveImage(imageUri: Uri): String {
  */
 @Throws(IOException::class)
 private fun fileCopy(src: File, dst: File) {
-    val inStream = FileInputStream(src)
-    val outStream = FileOutputStream(dst)
-    val inChannel = inStream.channel
-    val outChannel = outStream.channel
-    inChannel.transferTo(0, inChannel.size(), outChannel)
-    inStream.close()
-    outStream.close()
+    FileInputStream(src).use { inStream ->
+        val inChannel = inStream.channel
+        FileOutputStream(dst).use { outStream ->
+            val outChannel = outStream.channel
+            inChannel.transferTo(0, inChannel.size(), outChannel)
+        }
+
+        Unit
+    }
 }
