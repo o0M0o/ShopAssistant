@@ -58,7 +58,7 @@ class UsrDBUtil : DBUtilityBase<UsrItem, Int>() {
 
         return UsrItem().apply{
             this.name = usr
-            this.pwd = pwd
+            this.pwd = getMd5Pwd(pwd)
         }.let {
             createData(it).doJudge(it, null)
         }

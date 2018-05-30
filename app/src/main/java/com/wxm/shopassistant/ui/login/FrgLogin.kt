@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.*
 import com.wxm.shopassistant.R
 import com.wxm.shopassistant.define.GlobalDef
+import com.wxm.shopassistant.ui.welcome.ACWelcome
 import com.wxm.shopassistant.util.AppUtil
 import com.wxm.shopassistant.util.ToolUtil
 
@@ -136,7 +137,7 @@ class FrgLogin : FrgSupportBaseAdv() {
         showProgress(false)
 
         if(bRet)    {
-            //startActivityForResult(Intent(activity, ACWelcome::class.java), 1)
+            startActivityForResult(Intent(activity, ACWelcome::class.java), 1)
         } else  {
             mETPassword.error = getString(R.string.error_incorrect_password)
             mETPassword.requestFocus()

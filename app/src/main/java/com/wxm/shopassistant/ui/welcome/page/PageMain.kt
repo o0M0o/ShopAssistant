@@ -10,7 +10,7 @@ import wxm.androidutil.ui.frg.FrgSupportBaseAdv
  */
 class PageMain : FrgSupportBaseAdv(), PageBase {
     override fun getLayoutID(): Int = R.layout.page_main
-    override fun isUseEventBus(): Boolean = true
+    //override fun isUseEventBus(): Boolean = true
 
     override fun leavePage(): Boolean {
         return true

@@ -8,6 +8,8 @@ import com.j256.ormlite.support.ConnectionSource
 import com.j256.ormlite.table.TableUtils
 import com.wxm.shopassistant.data.item.LoginHistoryItem
 import com.wxm.shopassistant.data.item.UsrItem
+import com.wxm.shopassistant.define.GlobalDef
+import com.wxm.shopassistant.util.AppUtil
 import wxm.androidutil.log.TagLog
 import java.sql.SQLException
 
@@ -52,6 +54,9 @@ class DBHelper(context: Context)
             TagLog.e("Can't create database", e)
             throw RuntimeException(e)
         }
+
+        // 添加默认用户
+        AppUtil.usrUtil.addUsr(GlobalDef.DEF_USR_NAME, GlobalDef.DEF_USR_PWD)
     }
 
 

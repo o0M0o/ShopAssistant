@@ -1,4 +1,4 @@
-package wxm.KeepAccount.ui.base.TouchUI
+package com.wxm.shopassistant.ui.base.TouchUI
 
 import android.annotation.SuppressLint
 import android.content.Context
