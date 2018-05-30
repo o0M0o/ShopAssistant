@@ -19,4 +19,6 @@ object GlobalDef {
     const val DB_MODIFY = "modify"
 
     const val USR_DEFAULT_ICON_NAME = "usr_default_icon.png"
+
+    const val RET_USR_LOGOUT = 1000
 }

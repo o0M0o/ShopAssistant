@@ -12,6 +12,21 @@ import wxm.androidutil.ui.activity.ACSwitcherActivity
  * A login screen that offers login via email/password.
  */
 class ACLogin : ACSwitcherActivity<FrgLogin>() {
+    override fun getBackIconRID(): Int = R.drawable.ic_leave_white
+
+    override fun leaveActivity() {
+        Toast.makeText(this, R.string.show_quit_app,
+                Toast.LENGTH_SHORT).show()
+
+        try {
+            Thread.sleep(1000)
+        } finally {
+
+            Process.killProcess(Process.myPid())
+        }
+
+    }
+
     override fun setupFragment(p0: Bundle?) {
         addFragment(FrgLogin())
     }
@@ -25,19 +40,6 @@ class ACLogin : ACSwitcherActivity<FrgLogin>() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.mi_quit -> {
-                Toast.makeText(this, R.string.show_quit_app,
-                        Toast.LENGTH_SHORT).show()
-
-                try {
-                    Thread.sleep(1000)
-                } catch (e: InterruptedException) {
-                    return false
-                }
-
-                Process.killProcess(Process.myPid())
-            }
-
             R.id.mi_help -> {
                 /*
                 val intent = Intent(this, ACHelp::class.java)

@@ -1,3 +1,34 @@
 <resources>
     <string name="show_quit_app">退出应用!</string>
+
+    <string name="page_first">首页</string>
+    <string name="page_stats">统计</string>
+    <string name="page_usr">我的</string>
+    <string name="page_setting">设置</string>
+
+    <string name="version_code">当前版本号 : %d</string>
+    <string name="version_name">当前版本名 : %s</string>
+
+    <!-- for dialog -->
+    <string name="dlg_prompt">提示</string>
+    <string name="dlg_info">信息</string>
+    <string name="dlg_warn">警告</string>
+    <string name="dlg_erro">错误</string>
+
+    <string name="dlg_clear_all_data">此操作不能恢复，是否继续操作!</string>
+    <string name="dlg_data_refreshed">数据已刷新!</string>
+
+    <string name="dlg_usr_no_data">当前用户没有数据!</string>
+
+    <string name="dlg_need_budget_name">请输入预算名!</string>
+    <string name="dlg_need_budget_amount">请输入预算金额!</string>
+    <string name="dlg_already_have_budget_name">预算名已经存在!</string>
+
+    <string name="dlg_create_data_failure">创建数据失败!</string>
+    <string name="dlg_modify_data_failure">更新数据失败!</string>
+
+    <!-- for action -->
+    <string name="act_accept">确认</string>
+    <string name="act_logout">退出登录</string>
+    <string name="act_change_pwd">修改密码</string>
 </resources>

@@ -8,12 +8,4 @@
         android:orderInCategory="9000"
         android:title="@string/mu_help"
         app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/mi_quit"
-        android:icon="@drawable/ic_leave_white"
-        android:orderInCategory="9001"
-        android:title="@string/mu_quit"
-        app:showAsAction="ifRoom" />
-
 </menu>

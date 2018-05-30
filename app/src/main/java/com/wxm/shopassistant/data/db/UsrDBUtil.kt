@@ -1,7 +1,7 @@
 package com.wxm.shopassistant.data.db
 
 import com.j256.ormlite.dao.RuntimeExceptionDao
-import com.wxm.shopassistant.data.event.DBChangeEvent
+import com.wxm.shopassistant.data.event.DBChange
 import com.wxm.shopassistant.data.item.UsrItem
 import com.wxm.shopassistant.define.EDBChange
 import com.wxm.shopassistant.define.GlobalDef
@@ -21,15 +21,15 @@ class UsrDBUtil : DBUtilityBase<UsrItem, Int>() {
     override fun getDBHelper(): RuntimeExceptionDao<UsrItem, Int> = AppUtil.dbHelper.usrItemREDao
 
     override fun onDataCreate(p0: MutableList<Int>?) {
-        EventBus.getDefault().post(DBChangeEvent(p0!!, EDBChange.CREATE))
+        EventBus.getDefault().post(DBChange(p0!!, EDBChange.CREATE))
     }
 
     override fun onDataRemove(p0: MutableList<Int>?) {
-        EventBus.getDefault().post(DBChangeEvent(p0!!, EDBChange.DELETE))
+        EventBus.getDefault().post(DBChange(p0!!, EDBChange.DELETE))
     }
 
     override fun onDataModify(p0: MutableList<Int>?) {
-        EventBus.getDefault().post(DBChangeEvent(p0!!, EDBChange.MODIFY))
+        EventBus.getDefault().post(DBChange(p0!!, EDBChange.MODIFY))
     }
 
     /**

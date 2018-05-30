@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fl_page"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/rl_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/rl_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <wxm.uilib.IconButton.IconButton
+            android:id="@+id/ib_main_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:ibActName="@string/page_first"
+            app:ibActNameSize="12sp"
+            app:ibColorCold="@color/text_fit"
+            app:ibColorHot="@color/lightcoral"
+            app:ibIcon="@drawable/ic_first_page"
+            app:ibIconHeight="26dp"
+            app:ibIconWidth="26dp"
+            app:ibOrientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ib_stats"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <wxm.uilib.IconButton.IconButton
+            android:id="@+id/ib_stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:ibActName="@string/page_stats"
+            app:ibActNameSize="12sp"
+            app:ibColorCold="@color/text_fit"
+            app:ibColorHot="@color/lightcoral"
+            app:ibIcon="@drawable/ic_stats"
+            app:ibIconHeight="26dp"
+            app:ibIconWidth="26dp"
+            app:ibOrientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ib_usr"
+            app:layout_constraintStart_toEndOf="@id/ib_main_page"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <wxm.uilib.IconButton.IconButton
+            android:id="@+id/ib_usr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:ibActName="@string/page_usr"
+            app:ibActNameSize="12sp"
+            app:ibColorCold="@color/text_fit"
+            app:ibColorHot="@color/lightcoral"
+            app:ibIcon="@drawable/ic_usr"
+            app:ibIconHeight="26dp"
+            app:ibIconWidth="26dp"
+            app:ibOrientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ib_setting"
+            app:layout_constraintStart_toEndOf="@id/ib_stats"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <wxm.uilib.IconButton.IconButton
+            android:id="@+id/ib_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:ibActName="@string/page_setting"
+            app:ibActNameSize="12sp"
+            app:ibColorCold="@color/text_fit"
+            app:ibColorHot="@color/lightcoral"
+            app:ibIcon="@drawable/ic_help"
+            app:ibIconHeight="26dp"
+            app:ibIconWidth="26dp"
+            app:ibOrientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ib_usr"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
