@@ -123,6 +123,25 @@ class UsrDBUtil : DBUtilityBase<UsrItem, Int>() {
     }
 
     /**
+     * change [usr] icon to [fn]
+     *
+     * return true if everything ok
+     */
+    fun changeIcon(usr:UsrItem, fn:String):Boolean  {
+        return dbHelper.updateBuilder().let {
+            it.updateColumnValue(UsrItem.FIELD_ICON_PATH, fn)
+            it.where().eq(UsrItem.FIELD_ID, usr.id)
+            it.update() == 1
+        }.doJudge(
+                {
+                    usr.iconPath = AppUtil.usrUtil.getData(usr.id)!!.iconPath
+                    true
+                },
+                {false}
+        )
+    }
+
+    /**
      * return [orgPwd] as MD5 string
      */
     private fun getMd5Pwd(orgPwd: String): String {

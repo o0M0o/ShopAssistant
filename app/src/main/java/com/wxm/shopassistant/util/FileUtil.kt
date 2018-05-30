@@ -3,6 +3,7 @@ package com.wxm.shopassistant.util
 import android.net.Uri
 import android.provider.MediaStore
 import com.wxm.shopassistant.define.GlobalDef
+import wxm.androidutil.log.TagLog
 import wxm.androidutil.util.forObj
 import java.io.File
 import java.io.FileInputStream
@@ -52,12 +53,17 @@ fun getFileSuffixes(fn:String): String  {
 
 /**
  * save image from [imageUri] to app image directory
- * return image file name
+ * return image file name when success else ""
  */
 fun saveImage(imageUri: Uri): String {
     val realPath = getRealPathFromURI(imageUri)
     val newFN = createPath(AppUtil.imageDirPath,   UUID.randomUUID().toString() + getFileSuffixes(realPath))
-    fileCopy(File(realPath), File(newFN))
+    try {
+        fileCopy(File(realPath), File(newFN))
+    } catch (e:IOException) {
+        TagLog.e("", e)
+        return ""
+    }
 
     return newFN
 }
@@ -77,3 +83,4 @@ private fun fileCopy(src: File, dst: File) {
         Unit
     }
 }
+

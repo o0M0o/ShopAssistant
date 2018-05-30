@@ -56,10 +56,7 @@ class PageUsr : FrgSupportBaseAdv(), PageBase {
     }
 
     override fun loadUI(savedInstanceState: Bundle?) {
-        AppUtil.curUsr?.let1 {
-            mIVUsr.setImageURI(Uri.fromFile(File(it.iconPath)))
-            mTVUsrName.text = it.name
-        }
+        loadUsrInfo()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -68,7 +65,11 @@ class PageUsr : FrgSupportBaseAdv(), PageBase {
             val result = CropImage.getActivityResult(data)
             if (resultCode == Activity.RESULT_OK) {
                 saveImage(result.uri).let1 {
-                    mIVUsr.setImageURI(Uri.fromFile(File(it)))
+                    if(it.isNotEmpty()) {
+                        if(AppUtil.usrUtil.changeIcon(AppUtil.curUsr!!, it)) {
+                            loadUsrInfo()
+                        }
+                    }
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 DlgAlert.showAlert(activity!!, R.string.dlg_erro, result.error.toString())
@@ -100,6 +101,13 @@ class PageUsr : FrgSupportBaseAdv(), PageBase {
                     }
                 }
             }
+        }
+    }
+
+    private fun loadUsrInfo()   {
+        AppUtil.curUsr?.let1 {
+            mIVUsr.setImageURI(Uri.fromFile(File(it.iconPath)))
+            mTVUsrName.text = it.name
         }
     }
 

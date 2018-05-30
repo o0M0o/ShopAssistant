@@ -1,10 +1,13 @@
 package com.wxm.shopassistant.util
 
+import android.graphics.BitmapFactory
+import com.wxm.shopassistant.R
 import com.wxm.shopassistant.data.db.DBHelper
 import com.wxm.shopassistant.data.db.UsrDBUtil
 import com.wxm.shopassistant.data.item.UsrItem
 import com.wxm.shopassistant.define.GlobalDef
 import wxm.androidutil.app.AppBase
+import wxm.androidutil.image.ImageUtil
 import wxm.androidutil.util.FileUtil
 import java.io.File
 import java.nio.file.Files
@@ -56,6 +59,13 @@ class AppUtil : AppBase() {
             mImageDirPath = if (it) imagePath else rootDir.path
         }
 
+        File(AppUtil.usrDefaultIconPath).let1 {
+            if (!it.exists()) {
+                BitmapFactory.decodeResource(resources, R.drawable.ic_usr_big).let1 {
+                    ImageUtil.saveBitmapToJPGFile(it, AppUtil.imageDirPath, GlobalDef.USR_DEFAULT_ICON_NAME)
+                }
+            }
+        }
     }
 
     companion object {
